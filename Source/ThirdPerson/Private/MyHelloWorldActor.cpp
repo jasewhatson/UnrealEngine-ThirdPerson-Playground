@@ -19,7 +19,7 @@ void AMyHelloWorldActor::BeginPlay()
 	// Print Hello World to the Screen
 	if (GEngine)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Hello World from C++! 5"));
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Hello World from C++! 9"));
 	}
 	
 }
