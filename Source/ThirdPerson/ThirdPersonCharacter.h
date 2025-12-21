@@ -49,6 +49,14 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Input")
 	UInputAction* MouseLookAction;
 
+	/** The Animation Montage to play (MM_Attack_01) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Abilities")
+	UAnimMontage* ShockwaveMontage;
+
+	/** Shockwave Input Action (The IA_Shockwave you'll create in Unreal) */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+	UInputAction* ShockwaveAction;
+
 public:
 
 	/** Constructor */
@@ -66,6 +74,8 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
+
+	void TriggerShockwave(const FInputActionValue& Value);
 
 public:
 

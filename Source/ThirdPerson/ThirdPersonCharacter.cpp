@@ -66,6 +66,11 @@ void AThirdPersonCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AThirdPersonCharacter::Look);
+
+		if (ShockwaveAction)
+		{
+			EnhancedInputComponent->BindAction(ShockwaveAction, ETriggerEvent::Started, this, &AThirdPersonCharacter::TriggerShockwave);
+		}
 	}
 	else
 	{
@@ -131,4 +136,16 @@ void AThirdPersonCharacter::DoJumpEnd()
 {
 	// signal the character to stop jumping
 	StopJumping();
+}
+
+void AThirdPersonCharacter::TriggerShockwave(const FInputActionValue& Value)
+{
+	if (ShockwaveMontage)
+	{
+		UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+		if (AnimInstance)
+		{
+			AnimInstance->Montage_Play(ShockwaveMontage);
+		}
+	}
 }
