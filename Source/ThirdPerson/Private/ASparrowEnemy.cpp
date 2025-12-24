@@ -2,6 +2,8 @@
 
 
 #include "ASparrowEnemy.h"
+#include "NiagaraFunctionLibrary.h" // Add this at the top
+#include "NiagaraComponent.h"
 
 // Sets default values
 ASparrowEnemy::ASparrowEnemy()
@@ -88,6 +90,21 @@ void ASparrowEnemy::ShootAtPlayer()
 
         if (NewArrow)
         {
+
+            // Check if the asset is assigned before trying to spawn it
+            if (TrailSystemAsset)
+            {
+                UNiagaraFunctionLibrary::SpawnSystemAttached(
+                    TrailSystemAsset,
+                    NewArrow->GetRootComponent(),
+                    NAME_None,
+                    FVector::ZeroVector,
+                    FRotator::ZeroRotator,
+                    EAttachLocation::KeepRelativeOffset,
+                    true
+                );
+            }
+
             // 1. Get the Primitive Component (the collision)
             UPrimitiveComponent* RootPrim = Cast<UPrimitiveComponent>(NewArrow->GetRootComponent());
 

@@ -17,7 +17,8 @@ public class ThirdPerson : ModuleRules
 			"AIModule",
 			"StateTreeModule",
 			"GameplayStateTreeModule",
-			"UMG"
+			"UMG",
+            "Niagara" // <--- Add this line here
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });

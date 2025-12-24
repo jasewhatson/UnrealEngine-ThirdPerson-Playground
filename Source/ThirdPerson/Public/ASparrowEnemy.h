@@ -23,6 +23,14 @@ protected:
     // Called when the game starts or when spawned
     virtual void BeginPlay() override;
 
+    // This allows you to pick the Niagara system in the Unreal Editor
+    UPROPERTY(EditAnywhere, Category = "Combat")
+    class UNiagaraSystem* TrailSystemAsset;
+
+    // This allows you to pick the Niagara Asset in the Inspector
+    UPROPERTY(EditAnywhere, Category = "Combat")
+    class UNiagaraSystem* ArrowTrailSystem;
+
 public:
     // Called every frame
     virtual void Tick(float DeltaTime) override;
